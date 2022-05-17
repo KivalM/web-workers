@@ -8,6 +8,11 @@ worker.onerror = function (event) {
     throw new Error(event.message + " (" + event.filename + ":" + event.lineno + ")");
 }
 
+window.sendMessage = function (args) {
+    worker.postMessage(args);
+};
+
+
 async function onclick() {
     sendMessage("World")
 }
